@@ -1,0 +1,100 @@
+//import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  SafeAreaView, 
+  TouchableWithoutFeedback, 
+  TouchableOpacity,
+  TouchableHighlight,
+  TouchableNativeFeedback, //Only supported on Android (not very usefull)
+  Platform,
+  Dimensions,
+  ViewComponent,
+
+  Image 
+} from 'react-native';
+import { Button, Alert, StatusBar} from 'react-native';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
+
+
+export default function App() {
+  //const handlePress = () => console.log("Pressed");
+  //console.log(useDeviceOrientation());
+  //console.log(Dimensions.get('screen'))//***This returns the value of the screen of the device (in pixels).
+
+  const {landscape} = useDeviceOrientation();
+
+  return (
+    <SafeAreaView style={styles.container}>
+   
+      
+      <View //***Checking the background color manipulation
+        style={{
+          backgroundColor: '#fff',
+          flex: 1
+        }}>
+          <View style={{
+            backgroundColor: "dodgerblue",
+            flex: 3
+            }}/>
+            <View style={{
+            backgroundColor: "gold",
+            flex: 1
+            }}/>
+            <View style={{
+            backgroundColor: "tomato",
+            flex: 1
+            }}/>
+      </View> 
+
+      {/* 1:31 https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=ProgrammingwithMosh */}
+
+
+
+      {/* <Button 
+      color="orange"
+      title="Button" onPress={() => Alert.alert("Title", "My message", [
+        {text: "Yes", onPress: () => console.log("Yes")},
+        {text: "No", onPress: () => console.log("No")}
+      ])}/>  */}
+
+      {/* <View //***Checking the background color manipulation
+        style={{
+          backgroundColor: 'dodgerblue',
+          width: '100%',
+          height: landscape ? '100%' : '30%',
+        }}>
+      </View> */}
+
+      {/* <Text onPress={handlePress}>Hi my name is Yuri</Text>
+
+      <TouchableOpacity onPress={() => console.log("Image tapped")}>
+        <Image source={{
+        width: 200,
+        height: 300,
+        uri: "https://picsum.photos/200/300"}}/>
+      </TouchableOpacity> */}
+      
+      {/* <Button //***Study of the button behavor
+      color="orange" title="Hi, click me" onPress={() => console.log("clicked")}/>  */}
+
+
+
+
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    //paddingTop: Platform.OS === 'android' ? 30 : 0,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 10,
+     //alignItems: 'center',
+     //justifyContent: 'center',
+  },
+});
